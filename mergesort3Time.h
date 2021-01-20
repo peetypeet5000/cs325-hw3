@@ -1,5 +1,5 @@
-#ifndef MERGE_TIME
-#define MERGE_TIME
+#ifndef MERGE3_TIME
+#define MERGE3_TIME
 #include <iostream>
 #include <vector>
 #include <stdlib.h>

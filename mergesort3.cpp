@@ -1,8 +1,8 @@
-#include "merge.h"
+#include "mergesort3.h"
 
 /*
  * This program will parse the data from data.txt and sort it, printing out
- * to the standard output
+ * to the standard output. Reuses some code from my homework 1
  */
 int main() {
     //get data from file
@@ -16,7 +16,7 @@ int main() {
 
     //sort each line individually
     for(unsigned long int i = 0; i < data.size(); i++) {
-        merge_sort(data[i], 0, ((int)data[i].size() - 1));
+        //merge_sort_3(data[i], 0, ((int)data[i].size() - 1));
     }
     
     //print sorted data

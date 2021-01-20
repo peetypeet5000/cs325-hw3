@@ -1,7 +1,8 @@
-#include "mergeTime.h"
+#include "mergesort3Time.h"
 
 /*
- * This program will output timing data merge sorting arrays of ints of various sizes
+ * This program will output timing data merge sorting arrays of ints of various sizes.
+ * Reuses some code from my Homework 1
  */
 int main() {
     srand(time(NULL));
@@ -11,7 +12,7 @@ int main() {
 
         long int start_time = get_time_mil();
 
-        merge_sort(data, 0, (data.size() - 1));
+        merge_sort_3(data, 0, (data.size() - 1));
 
         long int end_time = get_time_mil();
 

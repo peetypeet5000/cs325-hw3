@@ -1,5 +1,5 @@
-#ifndef MERGE
-#define MERGE
+#ifndef MERGE3
+#define MERGE3
 
 #include "mergesort.h"
 
