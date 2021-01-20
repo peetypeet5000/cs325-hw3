@@ -7,6 +7,26 @@
 int main() {
     srand(time(NULL));
 
+    /* Run HW 1 mergesort2 test for comparision */
+    std::cout << "\n\n*** MergeSort2 Test: ***";
+
+    for(int n = 10000; n < 200001; n = n + 10000) {
+        std::vector<int> data = random_numbers(n);
+
+        long int start_time = get_time_mil();
+
+        merge_sort(data, 0, (data.size() - 1));
+
+        long int end_time = get_time_mil();
+
+        std::cout << "\nmergesort2 sorted n=" << n << " elements in " << end_time - start_time << " ms.";
+
+    }
+
+    
+    /* Run HW 2 mergesort3 test */
+    std::cout << "\n*** MergeSort3 Test: ***";
+
     for(int n = 10000; n < 200001; n = n + 10000) {
         std::vector<int> data = random_numbers(n);
 
@@ -16,9 +36,11 @@ int main() {
 
         long int end_time = get_time_mil();
 
-        std::cout << "\nMerge sorted n=" << n << " elements in " << end_time - start_time << " ms.";
+        std::cout << "\nmergesort3 sorted n=" << n << " elements in " << end_time - start_time << " ms.";
 
     }
     
+
+
     std::cout << "\n";
 }

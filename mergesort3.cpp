@@ -16,7 +16,7 @@ int main() {
 
     //sort each line individually
     for(unsigned long int i = 0; i < data.size(); i++) {
-        //merge_sort_3(data[i], 0, ((int)data[i].size() - 1));
+        merge_sort_3(data[i], 0, ((int)data[i].size() - 1));
     }
     
     //print sorted data

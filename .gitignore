@@ -31,3 +31,6 @@
 *.out
 *.app
 .vscode/settings.json
+data.txt:Zone.Identifier
+.vscode/tasks.json
+.vscode/launch.json
