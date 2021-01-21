@@ -8,9 +8,9 @@ int main() {
     srand(time(NULL));
 
     /* Run HW 1 mergesort2 test for comparision */
-    std::cout << "\n\n*** MergeSort2 Test: ***";
+    std::cout << "*** MergeSort2 Test: ***";
 
-    for(int n = 10000; n < 200001; n = n + 10000) {
+    for(int n = 25000; n < 500001; n = n + 25000) {
         std::vector<int> data = random_numbers(n);
 
         long int start_time = get_time_mil();
@@ -25,9 +25,9 @@ int main() {
 
     
     /* Run HW 2 mergesort3 test */
-    std::cout << "\n*** MergeSort3 Test: ***";
+    std::cout << "\n\n*** MergeSort3 Test: ***";
 
-    for(int n = 10000; n < 200001; n = n + 10000) {
+    for(int n = 25000; n < 500001; n = n + 25000) {
         std::vector<int> data = random_numbers(n);
 
         long int start_time = get_time_mil();

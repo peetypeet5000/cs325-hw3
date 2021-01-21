@@ -17,18 +17,20 @@ void merge_sort_3(std::vector<int> &array, int start, int end) {
 
     //if still in bounds (base case) if n is greather than 3
     if(end - start > 3) {
+        //calculate bounds for three arrays
         first_third = start + ((end - start) / 3);
         second_third = start + (2 * ((end - start) / 3)) + 1;
 
+        //split into three arrays
         merge_sort_3(array, start, first_third);
         merge_sort_3(array, first_third + 1, second_third);
         merge_sort_3(array, second_third + 1, end);
 
+        //merge back together
         sorted_merge_3(array, start, first_third, second_third, end);
 
     } else if(end - start > 0) {
         //else, manually sort the remaining elements (base case n = 3, n = 2, n = 1)
-
         if(end - start == 2) { //n = 3
             if(array[start + 1] > array[start + 2]) {
                 std::swap(array[start + 1], array[start + 2]);
@@ -69,15 +71,15 @@ void merge_sort_3(std::vector<int> &array, int start, int end) {
  *   end - an int of where you want to stop sorting (probably the array size - 1)
  */
 void sorted_merge_3(std::vector<int> &array, int start, int first_third, int second_third, int end) {  
-    //create temporaty arrays
+    //create temporaty arrays (copies elements inside)
     std::vector<int> a(array.begin() + start, array.begin() + first_third + 1);
     std::vector<int> b(array.begin() + (first_third + 1), array.begin() + ( second_third + 1));
     std::vector<int> c(array.begin() + (second_third + 1), array.begin() + end + 1);
 
-    // iterators for sub arrays
+    //sub array iterators
     int a_index = 0, b_index = 0, c_index = 0;
 
-    // the index we will start at when adding the subarrays back into the main array
+    //starting index for adding back into main array
     int curr = start;
 
     /*** case: all three arrays have a val ***/
