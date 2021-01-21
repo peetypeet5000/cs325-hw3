@@ -1,5 +1,6 @@
 # CS325 - Analysis of Algorithms Homework 2
 ## How to run:
+Language: C++
 A makefile is included. Run `make` to compile the program (using g++). Run the programs with the following executable names:
 * ./mergesort3 - Runs merge sort on the data from data.txt
 * ./mergesort3Time - Runs a test to see how fast merge sort is for large n
