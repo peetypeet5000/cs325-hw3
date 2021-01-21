@@ -2,10 +2,9 @@
 
 /*
  * This function takes a vector of ints and sorts them in ascending order, using the
- * insertion sort algorithm. Will recusivley call itsself many times. Some code resued from
- * my Homework 1
+ * three-way merge sort algorithm. Will recusivley call itsself many times.
  * 
- * Complexity: Θ(log(n))
+ * Complexity: Θ(nlog(n))
  *
  * Params:
  *   array - a referance to a vector containing an array of unsorted ints
@@ -16,7 +15,7 @@ void merge_sort_3(std::vector<int> &array, int start, int end) {
     int first_third, second_third;
 
     //if still in bounds (base case) if n is greather than 3
-    if(end - start > 3) {
+    if(end - start >= 3) {
         //calculate bounds for three arrays
         first_third = start + ((end - start) / 3);
         second_third = start + (2 * ((end - start) / 3)) + 1;
@@ -167,7 +166,7 @@ void sorted_merge_3(std::vector<int> &array, int start, int first_third, int sec
 
 /*
  * This function takes a vector of ints and sorts them in ascending order, using the
- * merge sort algorithm. Will recusivley call itsself many times
+ * merge sort algorithm. Will recusivley call itsself many times.
  * 
  * Complexity: Θ(nlog(n))
  *

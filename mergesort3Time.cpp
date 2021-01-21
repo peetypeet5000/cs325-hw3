@@ -2,6 +2,7 @@
 
 /*
  * This program will output timing data merge sorting arrays of ints of various sizes.
+ * Calls both 3 way merge sort and 2 way merge sort, for comparision
  * Reuses some code from my Homework 1
  */
 int main() {
