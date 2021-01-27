@@ -6,8 +6,7 @@ knapsack: util.o knapsack.o
 
 util.o: util.cpp util.h
 	$(CC) -c util.cpp
-
-util.o: knapsack.cpp knapsack.h
+knapsack.o: knapsack.cpp knapsack.h
 	$(CC) -c knapsack.cpp
 
 

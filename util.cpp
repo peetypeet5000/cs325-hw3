@@ -1,6 +1,31 @@
 #include "util.h"
 
 
+/*
+ * This function returns an array of random numbers generated in a range
+ *
+ * Params:
+ *   length - number of values you want in the array
+ *   min - minimum value of the numbers in the array
+ *   max - range of values in the array
+ */
+std::vector<int> generate_array(int length, int min, int max) {
+    //allocates enough space for all
+    std::vector<int> array(length);
+
+    for(int i = 0; i < length; i++) {
+        array[i] = (rand() % max) + min;
+    }
+
+    return array;
+
+}
+
+
+
+
+
+//opens and reads a text file line by line
 std::vector<std::vector<int>> read_file(std::vector<std::vector<int>> &output) {
     //open file
     std::ifstream file;
