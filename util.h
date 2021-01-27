@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include <chrono>
 #include <sys/time.h>
 
 //NEW FOR HOMEWORK 3
