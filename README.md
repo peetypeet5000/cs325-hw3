@@ -7,7 +7,6 @@ A makefile is included. Run `make` to compile the program (using g++). Run the p
 
 
 
-
 ## Program Requirements (for reference):
 ### Part 1: 0-1 Knapsack: Recursive vs DP
 Given weights and values of n items, select items to place in a knapsack of capacity W to maximize the total value in the knapsack. That is, given two integer arrays val[] and wt[ ] which represent values and weights associated with n items respectively and an integer W which represents knapsack capacity, determine the maximum value subset of val[] such that sum of the weights of this subset is ≤ W. Items cannot be broken or used more than once, you either select the complete item, or don’t select it. Implement both a recursive and dynamic programming algorithm to solve the 0-1 knapsack problem. Both algorithms should return the maximum total value of items that can fit in the knapsack.

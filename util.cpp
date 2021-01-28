@@ -29,7 +29,7 @@ std::vector<int> generate_array(int length, int min, int max) {
 std::vector<std::vector<int>> read_file(std::vector<std::vector<int>> &output) {
     //open file
     std::ifstream file;
-    file.open("data.txt");
+    file.open("shopping.txt");
 
     //init variables
     std::string line;

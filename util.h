@@ -9,7 +9,6 @@
 #include <sys/time.h>
 
 //NEW FOR HOMEWORK 3
-
 std::vector<int> generate_array(int, int, int);
 
 //CREATED IN HOMEWORK 1 & 2
