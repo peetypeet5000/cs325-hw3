@@ -1,9 +1,9 @@
 # CS325 - Analysis of Algorithms Homework 3
 ## How to run:
-Language: C++
+Language: C++  
 A makefile is included. Run `make` to compile the program (using g++). Run the programs with the following executable names:
-* ./knapsack
-* ./shopping
+* ./knapsack (outputs to terminal)
+* ./shopping (outputs to results.txt)
 
 
 

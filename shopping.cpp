@@ -3,8 +3,11 @@
 using std::vector;
 using std::cout;
 
+
+
 int main() {
 
+    //get data from "shopping.txt"
     vector<vector<int>> data;
     read_file(data);
 
@@ -12,6 +15,7 @@ int main() {
 
     //T Test Cases  (first int in file)
     for(int i = 0; i < data[0][0]; i++) {
+        //call for each case
         shopping_spree(data, i, line_in_file);
     }
 
@@ -35,25 +39,20 @@ int main() {
 void shopping_spree(vector<vector<int>>& data, const int test_case, int& line_in_file) {
         //Declare and read-in data from file
         int num_items, num_people;
+        int max_capacity = 0;
         vector<int> prices, weights, people_capacity;
-        read_data(num_items, num_people, line_in_file, prices, weights, people_capacity, data, test_case);
+        read_data(num_items, num_people, line_in_file, max_capacity, prices, weights, people_capacity, data, test_case);
 
         //Run Algorithm for max weight & save result
-        vector<vector<int>> dp_result = dp_generate_array(prices, weights, get_max_capacity(num_people, people_capacity), num_items);
+        vector<vector<int>> dp_result = dp_generate_array(prices, weights, max_capacity, num_items);
 
-        //backtrace to get each family members result
+        //backtrace to get each family members result & the total price
         vector<vector<int>> items_taken;
-        for(int i = 0; i < num_people; i++) {
-            items_taken.push_back(backtrace_family(dp_result, prices, weights, people_capacity[i], num_items));
-        }
-
-        //find total value of items
         int total_price = 0;
-        for(long unsigned int i = 0; i < items_taken.size(); i++) {
-            for(long unsigned int j = 0; j < items_taken[i].size(); j++) {
-                total_price += prices[items_taken[i][j] - 1]; //add price of item
-            }
+        for(int i = 0; i < num_people; i++) {
+            items_taken.push_back(backtrace_family(dp_result, prices, weights, people_capacity[i], num_items, total_price));
         }
+        
 
         //print result
         print_result(prices, weights, people_capacity, items_taken, num_items, num_people, total_price);
@@ -67,7 +66,7 @@ void shopping_spree(vector<vector<int>>& data, const int test_case, int& line_in
  *  used by the algorithm. passes all by referance as they are created earlier
  *  in the program.
  */
-void read_data(int& num_items, int& num_people, int& line_in_file, vector<int>& prices, vector<int>& weights, vector<int>& people_capacity, vector<vector<int>>& data, const int i) {
+void read_data(int& num_items, int& num_people, int& line_in_file, int& max_capacity, vector<int>& prices, vector<int>& weights, vector<int>& people_capacity, vector<vector<int>>& data, const int i) {
         //get all prices and weights into arrays
         num_items = data[line_in_file++][0];
         for(int n = 0; n < num_items; n++) {
@@ -80,6 +79,10 @@ void read_data(int& num_items, int& num_people, int& line_in_file, vector<int>& 
         num_people = data[line_in_file++][0];
         for(int n = 0; n < num_people; n++) {
             people_capacity.push_back(data[line_in_file][0]);
+            //keep track of whateve the highest capacity is
+            if(max_capacity < data[line_in_file][0]) {
+                max_capacity = data[line_in_file][0];
+            }
             line_in_file++;
         }
 
@@ -134,33 +137,6 @@ void print_result(const vector<int>& prices, const vector<int>& weights, const v
     }
 
     output_file.close();
-}
-
-
-
-/*
- *  Finds the person in people_capacity with the greatest capacity
- *
- * Params:
- *   nume_people - number of people in the shop
- *   people_capacity - capacity each person can carry. must
- *   have length equal to num_people
- * 
- * Return:
- *   int of max value in people_capacity
- */
-int get_max_capacity(int num_people, vector<int>& people_capacity) {
-    //start with first as smallest
-    int max = people_capacity[0];
-
-    //if smaller found, overright
-    for(int i = 0; i < num_people; i++) {
-        if(people_capacity[i] > max) {
-            max = people_capacity[i];
-        }
-    }
-
-    return max;
 }
 
 
@@ -221,19 +197,22 @@ vector<vector<int>> dp_generate_array(const vector<int>& values, const vector<in
  * Return:
  *   vector containing int corresponding to items taken
  */
-vector<int> backtrace_family(const vector<vector<int>>& dp_result, const vector<int>& values, const vector<int>& weights, int w, int num_items) {
+vector<int> backtrace_family(const vector<vector<int>>& dp_result, const vector<int>& values, const vector<int>& weights, int w, int num_items, int& total_price) {
     vector<int> items_taken;
     //find the max for the given persons weight
-    int max = dp_result[num_items][w];
+    int max_price = dp_result[num_items][w];
+
+    //add this to the running total of the family total
+    total_price += max_price;
 
     //backtrace and find the items they took 
-    for(int i = num_items; i > 0 && max > 0; i--){
-        if(max != dp_result[i-1][w]){
+    for(int i = num_items; i > 0 && max_price > 0; i--){
+        if(max_price != dp_result[i-1][w]){
             //push item taken into vector
             items_taken.push_back(i); 
 
             //subtract its val and weight so we can keep backtracing
-            max -= values[i - 1];
+            max_price -= values[i - 1];
             w -= weights[i - 1];
         }
     }

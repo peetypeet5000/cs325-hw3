@@ -112,6 +112,8 @@ std::vector<std::vector<int>> parse_ints(std::vector<std::string> lines) {
 }
 
 
+
+//prints a 2D vector array of ints
 void print_array(const std::vector<std::vector<int>> &output) {
     for(long unsigned int i = 0; i < output.size(); i++){
         for(long unsigned int j = 0; j < output[i].size(); j++) {
@@ -152,6 +154,9 @@ long int get_time_mil() {
 }
 
 
+
+//returns time in microsends since epoch
+//unsigned 64bit int
 uint64_t get_time_micro()
 {
     uint64_t micro = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::
