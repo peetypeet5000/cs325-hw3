@@ -53,7 +53,7 @@ int main() {
 
 
         /* PRINT RESULTS */
-        cout << "n = " << n << " w = " << w << " Rec time = " << end_time_recurs - start_time_recurs << " DP time = " << end_time_dp - start_time_dp << " Max rec = " << max_val_recurs << " Max DP = " << max_val_dp << '\n'; 
+        cout << "n = " << n << " w = " << w << " Rec time = " << (float)((end_time_recurs - start_time_recurs)/1000.0) << " DP time = " << (float)((end_time_dp - start_time_dp)/1000.0) << " Max rec = " << max_val_recurs << " Max DP = " << max_val_dp << '\n'; 
     }
 
     
