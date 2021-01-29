@@ -23,6 +23,26 @@ std::vector<int> generate_array(int length, int min, int max) {
 
 
 
+/*
+ * Helper function to return max of two ints
+ *
+ * Params:
+ *   a - first int to compare
+ *   b - second
+ * 
+ * Return:
+ *   larger of a or b (or b if equal)
+ */
+int maximum(int a, int b) {
+    if(a > b) {
+        return a;
+    }
+
+    return b;
+}
+
+
+
 
 
 //opens and reads a text file line by line
@@ -129,4 +149,12 @@ long int get_time_mil() {
     return tp.tv_sec * 1000 + tp.tv_usec / 1000;
 
 
+}
+
+
+uint64_t get_time_micro()
+{
+    uint64_t micro = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::
+                  now().time_since_epoch()).count();
+    return micro; 
 }

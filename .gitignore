@@ -31,13 +31,14 @@
 *.out
 *.app
 
-
+# Additions
 .vscode/settings.json
-data.txt:Zone.Identifier
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/c_cpp_properties.json
 .vscode/
 .vscode/*
+
 knapsack
 shopping
+results.txt

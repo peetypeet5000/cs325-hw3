@@ -20,18 +20,18 @@ int main() {
         vector<int> values = generate_array(n, 1, 100); //values 1-25
         
         /* DP TEST */
-        long int start_time_dp = get_time_mil();
+        auto start_time_dp = get_time_micro();
         int max_val_dp = dp_knapsack(values, weights, w, n);
-        long int end_time_dp = get_time_mil();
+        auto end_time_dp = get_time_micro();
 
         /* RECURSIVE TEST */
-        long int start_time_recurs = get_time_mil();
+        auto start_time_recurs = get_time_micro();
         int max_val_recurs = recursive_knapsack(values, weights, w, n);
-        long int end_time_recurs = get_time_mil();
+        auto end_time_recurs = get_time_micro();
 
 
         /* PRINT RESULTS */
-        cout << "n = " << n << " w = " << w << " Rec time = " << end_time_recurs - start_time_recurs << " DP time = " << end_time_dp - start_time_dp << " Max rec = " << max_val_recurs << " Max DP = " << max_val_dp << '\n'; 
+        cout << "n = " << n << " w = " << w << " Rec time = " << (float)((end_time_recurs - start_time_recurs)/1000.0) << "ms DP time = " << (float)((end_time_dp - start_time_dp)/1000.0) << "ms Max rec = " << max_val_recurs << " Max DP = " << max_val_dp << '\n'; 
     }
 
     /* Variable Weights */
@@ -42,14 +42,14 @@ int main() {
         vector<int> values = generate_array(n, 1, 100); //values 1-25
         
         /* DP TEST */
-        long int start_time_dp = get_time_mil();
+        auto start_time_dp = get_time_micro();
         int max_val_dp = dp_knapsack(values, weights, w, n);
-        long int end_time_dp = get_time_mil();
+        auto end_time_dp = get_time_micro();
 
         /* RECURSIVE TEST */
-        long int start_time_recurs = get_time_mil();
+        auto start_time_recurs = get_time_micro();
         int max_val_recurs = recursive_knapsack(values, weights, w, n);
-        long int end_time_recurs = get_time_mil();
+        auto end_time_recurs = get_time_micro();
 
 
         /* PRINT RESULTS */
@@ -89,26 +89,6 @@ int recursive_knapsack(vector<int> values, vector<int> weights, int w, int n) {
 
     //CASE: Test if including object will increse max value
     return maximum((values[n - 1] + recursive_knapsack(values, weights, w - weights[n - 1], n-1)), recursive_knapsack(values, weights, w, n-1));
-}
-
-
-
-/*
- * Helper function to return max of two ints
- *
- * Params:
- *   a - first int to compare
- *   b - second
- * 
- * Return:
- *   larger of a or b (or b if equal)
- */
-int maximum(int a, int b) {
-    if(a > b) {
-        return a;
-    }
-
-    return b;
 }
 
 
