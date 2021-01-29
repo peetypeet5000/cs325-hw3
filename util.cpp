@@ -26,7 +26,7 @@ std::vector<int> generate_array(int length, int min, int max) {
 
 
 //opens and reads a text file line by line
-std::vector<std::vector<int>> read_file(std::vector<std::vector<int>> &output) {
+void read_file(std::vector<std::vector<int>> &output) {
     //open file
     std::ifstream file;
     file.open("shopping.txt");
@@ -45,16 +45,10 @@ std::vector<std::vector<int>> read_file(std::vector<std::vector<int>> &output) {
 
     //converts string vector into int vector
     output = parse_ints(lines);
-    
-    /* for checking
-    read_array(output);
-    */
-    
 
     
     //close and return
     file.close();
-    return output;
     
 
 }
@@ -84,10 +78,8 @@ std::vector<std::vector<int>> parse_ints(std::vector<std::string> lines) {
             } 
             //else, it must be a space, so insert temp number into int array
             else if(temp != "") {
-                if(num != 0) {  //ignores first value, as it is not actually in the data
-                    //std::cout << "\nadding " << std::stoi(temp) << " to vector";
-                    output[i].push_back(std::stoi(temp));
-                }
+                //std::cout << "\nadding " << std::stoi(temp) << " to vector";
+                output[i].push_back(std::stoi(temp));
                 temp.clear();
                 num++;
 

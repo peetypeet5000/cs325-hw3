@@ -12,12 +12,6 @@ int main() {
 
     srand(time(NULL));
 
-    vector<int> weights = generate_array(20, 1, 20); //values 1-25
-    vector<int> values = generate_array(20, 1, 100);
-    int one = recursive_knapsack(values, weights, 50, 20);
-    int two = dp_knapsack(values, weights, 50, 20);
-    cout << one << "   " << two << '\n';
-
     /* Variable Items */
     cout << "***Varying Items Test***\n";
     for(int n = 6; n < 31; n = n + 3) {
