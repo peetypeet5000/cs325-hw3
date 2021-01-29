@@ -55,7 +55,7 @@ void shopping_spree(vector<vector<int>>& data, const int test_case, int& line_in
         
 
         //print result
-        print_result(prices, weights, people_capacity, items_taken, num_items, num_people, total_price);
+        print_result(prices, weights, people_capacity, items_taken, num_items, num_people, total_price, test_case);
 
 }
 
@@ -86,7 +86,8 @@ void read_data(int& num_items, int& num_people, int& line_in_file, int& max_capa
             line_in_file++;
         }
 
-        print_input_data(prices, weights, people_capacity, num_items, num_people, i);
+        //uncomment for testing purposes
+        //print_input_data(prices, weights, people_capacity, num_items, num_people, i);
 
 }
 
@@ -120,13 +121,13 @@ void print_input_data(const vector<int>& prices, const vector<int>& weights, con
  *  Prints the results of the algorithm to "results.txt"
  *
  */
-void print_result(const vector<int>& prices, const vector<int>& weights, const vector<int>& people_capacity, const vector<vector<int>>& items_taken, const int num_items, const int num_people, const int total_price) {
+void print_result(const vector<int>& prices, const vector<int>& weights, const vector<int>& people_capacity, const vector<vector<int>>& items_taken, const int num_items, const int num_people, const int total_price, const int test_case) {
     //opens the file in append mode
     std::ofstream output_file;
     output_file.open("results.txt", std::ios::app);
 
     //print the results to the file
-    output_file << "\n***Result***\nTotal Price: " << total_price << "\nMember Items:";
+    output_file << "\n\n***Test Case " << test_case + 1 << " Result***\nTotal Price: " << total_price << "\nMember Items:";
     for(long unsigned int i = 0; i < items_taken.size(); i++) {
         output_file << "\n" << i + 1 << ": ";
         if(items_taken[i].size() > 0) { //preven seg fault if no items taken
